@@ -1,0 +1,12 @@
+@font-face {
+    font-family: p22Vincent;
+    src: url(../fonts/P22-Vincent-Regular.otf);
+	}
+h1.title {
+
+font: 4em p22Vincent;
+background: #000 url(../Images/Cave.jpg) no-repeat right;
+
+margin: 0 0 0 0;
+color: #C2FFFF;
+}
