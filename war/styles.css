@@ -24,7 +24,7 @@ body {
 	position: fixed;
 }
 #left, #right {
-	background-image: url(images/borderV.jpg);
+	background-image: url(Images/borderV.jpg);
 	top: 0; bottom: 0;
 	width: 15px;
 }
@@ -33,7 +33,7 @@ body {
 #right { right: 0; }
 
 #top, #bottom {
-	background-image: url(images/borderH.jpg);
+	background-image: url(Images/borderH.jpg);
 	left: 0; right: 0;
 	height: 15px;
 }
