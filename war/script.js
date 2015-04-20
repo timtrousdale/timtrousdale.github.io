@@ -29,15 +29,19 @@ $(document).ready(function() {
 	//this is a loop within a a loop that will add one of each number (1-13)
 	// to the deck array as an object with a number value and suit string
 	var deck = [];
-	var suits = ['hearts', 'diamonds', 'spades', 'clubs'];
-	for (var i = 0; i < suits.length; i++) {
-		var suit = suits[i];
-		for (var j = 1; j < 14; j++) {
-			deck.push({
-				number: j + 1, suit: suit, cardImage: -3536 + (i * 884) + (68 * j)
-			})
+	var newDeck = function(deck) {
+		var suits = ['hearts', 'diamonds', 'spades', 'clubs'];
+		for (var i = 0; i < suits.length; i++) {
+			var suit = suits[i];
+			for (var j = 1; j < 14; j++) {
+				deck.push({
+					number: j + 1, suit: suit, cardImage: -3536 + (i * 884) + (68 * j)
+				})
+			}
 		}
-	}
+	};
+
+	newDeck(deck);
 
 	//what does this do?
 	//I assume that if you just put a variable as the controller of the while loop, it will stop when it reaches 0
@@ -109,8 +113,8 @@ $(document).ready(function() {
 		var card_1 = cards_player_1[f];
 		var card_2 = cards_player_2[g];
 		$('.potCard').css('visibility', 'visible');
-		$('.oppCard' + (f-1)).css('background-position', card_1.cardImage);
-		$('.myCard' + (g-1)).css('background-position', card_2.cardImage);
+		$('.oppCard' + (f)).css('background-position', card_1.cardImage);
+		$('.myCard' + (g)).css('background-position', card_2.cardImage);
 		if(f === 1 || g === 1){
 			cards_player_1 = cards_player_1.concat(cards_player_1.splice(0, i));
 			cards_player_2 = cards_player_2.concat(cards_player_2.splice(0, e));
@@ -134,7 +138,7 @@ $(document).ready(function() {
 		var card_2 = cards_player_2[0];
 		var c1 = cards_player_1.length;
 		var c2 = cards_player_2.length;
-		var c3 = 5;
+		var c3 = 4;
 		advance();
 		if (war(card_1.number, card_2.number) === "player1") {
 			cards_player_1.push(cards_player_1.shift());
@@ -151,18 +155,31 @@ $(document).ready(function() {
 
 	var resetWar = function(){
 		$('.potCard').css('visibility', 'hidden');
+		$('.potCard').css('background-position', '-3536');
 	};
 
 	//TEST SECTION!!!!!!
-	//cards_player_1 = [{number: 1, suit: 'diamond', cardImage: (-3536 + 68)}, {number: 1, suit: 'diamond', cardImage: -3536 + 136}, {number: 1, suit: 'diamond', cardImage: -3536+204},{number: 1, suit: 'diamond', cardImage: -3536+272},{number: 1, suit: 'diamond', cardImage: -3536+340},{number: 1, suit: 'diamond', cardImage: -3536+408}];
-	//cards_player_2 = [{number: 1, suit: 'diamond', cardImage: (-3536 + 68)}, {number: 1, suit: 'diamond', cardImage: -3536+136}, {number: 1, suit: 'diamond', cardImage: -3536+204},{number: 1, suit: 'diamond', cardImage: -3536+272},{number: 1, suit: 'diamond', cardImage: -3536+340},{number: 1, suit: 'diamond', cardImage: -3536+408}];
+	//cards_player_1 = [{number: 2, suit: 'diamond', cardImage: (-3536 + 68)}, {number: 3, suit: 'diamond', cardImage: -3536 + 136}, {number: 4, suit: 'diamond', cardImage: -3536+204},{number: 5, suit: 'diamond', cardImage: -3536+272},{number: 6, suit: 'diamond', cardImage: -3536+340},{number: 7, suit: 'diamond', cardImage: -3536+408}];
+	//cards_player_2 = [{number: 2, suit: 'diamond', cardImage: (-3536 + 68)}, {number: 3, suit: 'diamond', cardImage: -3536 + 136}, {number: 4, suit: 'diamond', cardImage: -3536+204},{number: 5, suit: 'diamond', cardImage: -3536+272},{number: 6, suit: 'diamond', cardImage: -3536+340},{number: 7, suit: 'diamond', cardImage: -3536+408}];
 
 	//this function (defined below) will continue to the next turn
 	$(".btn").click(function() {
 		$('.potCard').css('visibility', 'visible');
-		console.log(cards_player_1);
-		console.log(cards_player_2);
 		resetWar();
 		play();
+	});
+	$(".btn2").click(function() {
+
+		resetWar();
+		$('.opp-card-container').css('background-position', '-3536');
+		$('.my-card-container').css('background-position', '-3536');
+		cards_player_1 = [];
+		cards_player_2 = [];
+		deck = [];
+		newDeck(deck);
+		deck = shuffle(deck);
+		deal(deck);
+		$("#opp-card-count").html(cards_player_1.length);
+		$("#my-card-count").html(cards_player_2.length);
 	});
 });
