@@ -99,9 +99,18 @@ $(document).ready(function() {
 		if (cards_player_1.length) {
 			var card_1 = cards_player_1[0];
 			var card_2 = cards_player_2[0];
-			$("#opp-card").html(convert_value_to_string(card_1.number) + " " + card_1.suit);
+			var winner = war(card_1.number, card_2.number);
+			if (winner === 'player1') {
+				$("#opp-card").html(convert_value_to_string(card_1.number) + " " + card_1.suit + " Wins!");
+				$("#my-card").html(convert_value_to_string(card_2.number) + " " + card_2.suit);
+			} else if (winner === 'player2') {
+				$("#opp-card").html(convert_value_to_string(card_1.number) + " " + card_1.suit);
+				$("#my-card").html(convert_value_to_string(card_2.number) + " " + card_2.suit + " Wins!");
+			} else {
+				$("#opp-card").html(convert_value_to_string(card_1.number) + " " + card_1.suit + " WAR!!!!");
+				$("#my-card").html(convert_value_to_string(card_2.number) + " " + card_2.suit + " WAR!!!!");
+			}
 			$("#opp-card-count").html(cards_player_1.length);
-			$("#my-card").html(convert_value_to_string(card_2.number) + " " + card_2.suit);
 			$("#my-card-count").html(cards_player_2.length);
 			$('.opp-card-container').css('background-position', card_1.cardImage);
 			$('.my-card-container').animate().css('background-position', card_2.cardImage);
@@ -109,7 +118,6 @@ $(document).ready(function() {
 		}
 	};
 	var war_time = function (i, e, f, g) {
-		alert();
 		var card_1 = cards_player_1[f];
 		var card_2 = cards_player_2[g];
 		$('.potCard').css('visibility', 'visible');

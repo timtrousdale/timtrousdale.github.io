@@ -1,0 +1,21 @@
+@font-face {
+    font-family: p22Vincent;
+    src: url(DnD_Website/fonts/P22-Vincent-Regular.otf);
+}
+h1.title {
+    font: 4em p22Vincent;
+    margin: 0 0 0 0;
+    color: #FFFFFF;
+}
+body {
+    text-align: center;
+}
+.navDnD {
+    display: block;
+    padding-right: 3em;
+
+}
+.navwar {
+    display: block;
+
+}
