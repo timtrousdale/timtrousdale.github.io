@@ -1,0 +1,3 @@
+[submodule "Twitter_Clone/twitter-clone"]
+	path = Twitter_Clone/twitter-clone
+	url = https://github.com/timtrousdale/twitter-clone.git
