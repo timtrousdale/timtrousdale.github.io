@@ -173,6 +173,8 @@ $(document).ready(function() {
 	//this function (defined below) will continue to the next turn
 	$(".btn").click(function() {
 		$('.potCard').css('visibility', 'visible');
+		console.log(cards_player_1);
+		console.log(cards_player_2);
 		resetWar();
 		play();
 	});
@@ -190,4 +192,10 @@ $(document).ready(function() {
 		$("#opp-card-count").html(cards_player_1.length);
 		$("#my-card-count").html(cards_player_2.length);
 	});
+
+
 });
+
+
+
+
