@@ -9,13 +9,13 @@ h1.title {
 }
 body {
     text-align: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 .navDnD {
-    display: block;
     padding-right: 3em;
 
 }
 .navwar {
-    display: block;
 
 }
